@@ -1,35 +1,40 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import RestaurantList from "./components/RestaurantList";
+import RestaurantMenu from "./components/RestaurantMenu";
+import Error from "./components/Error";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Shimmer from "./components/Shimmer";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
-
-/*
-Header
-    Logo
-    Nav items
-    Cart
-Body
-    RestaurantList
-        RestaurantCard
-            Img
-            Name
-            Rating
-Footer
-    Copyright
-*/
 
 const AppLayout = () => {
     return (
         <>
             <Header />
-            <RestaurantList />
+            <Outlet />
             <Footer />
         </>
     )
 }
 
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <AppLayout />,
+        errorElement: <Error />,
+        children: [
+            {
+                path: "/",
+                element: <RestaurantList />
+            },
+            {
+                path: "restaurant/:id",
+                element: <RestaurantMenu />
+            }
+        ]
+    }
+])
+
 const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(<AppLayout />)
+root.render(<RouterProvider router={router} />)
