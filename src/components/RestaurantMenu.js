@@ -29,7 +29,6 @@ const RestaurantMenu = () => {
     }, [])
 
 
-    console.log(useState("Hello"))
     return (
         restaurantDetails ?
             <div className='w-3/4 mx-auto my-10 p-4 bg-slate-50'>

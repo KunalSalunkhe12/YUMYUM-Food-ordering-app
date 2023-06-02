@@ -4,6 +4,7 @@ import { RESTAURANT_LIST_URL } from "../constant"
 import Error from "./Error"
 import { BiSearchAlt2 } from "react-icons/bi"
 import Shimmer from "./Shimmer"
+import useCheckOnline from "../../utils/useCheckOnline"
 
 const RestaurantList = () => {
     const [searchInput, setSearchInput] = useState("")
@@ -29,6 +30,8 @@ const RestaurantList = () => {
 
     const filteredRestaurants = restaurants.filter(restaurant => restaurant.data.name.toLowerCase().includes(searchInput.toLowerCase()))
 
+    const isOnline = useCheckOnline()
+    if (!isOnline) return <h1>You are Currently Offline</h1>
     if (isError) return <Error />
 
     return (
@@ -42,6 +45,7 @@ const RestaurantList = () => {
                     </div>
                 </div>
             </div>
+
 
             {
                 restaurants.length > 0 ?
