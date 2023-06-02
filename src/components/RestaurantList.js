@@ -31,7 +31,7 @@ const RestaurantList = () => {
     const filteredRestaurants = restaurants.filter(restaurant => restaurant.data.name.toLowerCase().includes(searchInput.toLowerCase()))
 
     const isOnline = useCheckOnline()
-    if (!isOnline) return <h1>You are Currently Offline</h1>
+    if (!isOnline) return <h1>You are Currently Offline 🚩</h1>
     if (isError) return <Error />
 
     return (
