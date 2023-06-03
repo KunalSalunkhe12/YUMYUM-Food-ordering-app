@@ -6,10 +6,9 @@ import Error from "./components/Error";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import About from "./components/About";
-import Contact from "./components/Contact";
+import Help from "./components/Help";
 import Profile from "./components/Profile";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Shimmer from "./components/Shimmer"
 
 
 const AppLayout = () => {
@@ -41,8 +40,8 @@ const router = createBrowserRouter([
                 element: <About />
             },
             {
-                path: "/contact",
-                element: <Contact />,
+                path: "/help",
+                element: <Help />,
                 children: [
                     {
                         path: "profile",

@@ -1,6 +1,23 @@
 export const CDN_IMG_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 export const RESTAURANT_LIST_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.3667296&lng=72.819814&page_type=DESKTOP_WEB_LISTING"
 export const RESTAURANT_MENU_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.517929&lng=88.38341199999999&restaurantId=";
+export const HELP_FAQ = [
+    {
+        id: "first",
+        question: "How does YumYum ensure a wide variety of restaurant options?",
+        answer: "YumYum has partnered with the best local restaurants and popular chains in your area. We carefully select our partners based on their quality, taste, and commitment to exceptional service, ensuring that you have access to a diverse range of cuisines and flavors in one place."
+    },
+    {
+        id: "second",
+        question: "How easy is it to place an order with YumYum?",
+        answer: " Ordering with YumYum is quick and effortless. Our intuitive website and mobile app allow you to browse menus, customize your orders, and securely complete your transaction with just a few taps. It's a seamless experience from start to finish, designed to save you time."
+    },
+    {
+        id: "third",
+        question: "How does YumYum prioritize customer satisfaction?",
+        answer: "At YumYum, your satisfaction is our top priority. We strive to provide excellent customer service, ensuring that your orders are accurate, on time, and prepared with care. Our dedicated support team is always ready to assist you with any queries or concerns you may have, making your experience with YumYum as delightful as the food itself."
+    }
+]
 export const restaurantList = [
     {
         type: "restaurant",

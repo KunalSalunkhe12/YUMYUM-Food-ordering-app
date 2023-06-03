@@ -16,7 +16,7 @@ const Header = () => {
                 </li>
                 <li className="p-4 list-none inline-block transition ease-in-out duration-100 hover:scale-105">
                     <NavLink className={({ isActive, isPending }) =>
-                        isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/contact">Contact</NavLink>
+                        isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/help">Help</NavLink>
                 </li>
                 <li className="p-4 list-none inline-block transition ease-in-out duration-100 hover:scale-105">
                     <NavLink className={({ isActive, isPending }) =>
