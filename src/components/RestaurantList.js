@@ -16,7 +16,8 @@ const RestaurantList = () => {
         try {
             const response = await fetch(RESTAURANT_LIST_URL)
             const json = await response.json()
-            setRestaurants(json?.data?.cards[0]?.data?.data?.cards)
+            console.log(json)
+            setRestaurants(json?.data?.cards[2]?.data?.data?.cards)
         } catch (error) {
             console.log(error)
             setIsError(true)
@@ -27,7 +28,6 @@ const RestaurantList = () => {
     useEffect(() => {
         getAllRestaurants()
     }, [])
-    console.log(restaurants)
 
     const filteredRestaurants = restaurants.filter(restaurant => restaurant.data.name.toLowerCase().includes(searchInput.toLowerCase()))
 
