@@ -4,7 +4,6 @@ import RestaurantList from "./components/RestaurantList";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Error from "./components/Error";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import About from "./components/About";
 import Help from "./components/Help";
 import Profile from "./components/Profile";
@@ -16,7 +15,6 @@ const AppLayout = () => {
         <>
             <Header />
             <Outlet />
-            <Footer />
         </>
     )
 }
@@ -37,17 +35,17 @@ const router = createBrowserRouter([
             },
             {
                 path: "/about",
-                element: <About />
-            },
-            {
-                path: "/help",
-                element: <Help />,
+                element: <About />,
                 children: [
                     {
                         path: "profile",
                         element: <Profile />
                     }
                 ]
+            },
+            {
+                path: "/help",
+                element: <Help />,
             }
         ]
     }

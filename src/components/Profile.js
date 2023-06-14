@@ -1,5 +1,6 @@
-import React from "react";
+//Made this in class components only to study how we write class based components
 
+import React from "react";
 class Profile extends React.Component {
 
     constructor(props) {
@@ -10,7 +11,6 @@ class Profile extends React.Component {
                 location: "Dummy Name"
             }
         }
-        console.log("child constructor")
     }
 
     async componentDidMount() {
@@ -20,20 +20,15 @@ class Profile extends React.Component {
             userInfo: json
         })
 
-        console.log("child componentDidMount")
-    }
-
-    componentWillUnmount() {
-        console.log("child componentWillUnmount")
     }
 
     render() {
-        console.log("render")
         return (
             <>
-                <div>Profile Class Component {this.state.userInfo.name}</div>
+                <div>Name: {this.state.userInfo.name}</div>
                 <p>Location: {this.state.userInfo.location}</p>
-            </>)
+            </>
+        )
     }
 }
 
