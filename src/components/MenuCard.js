@@ -1,9 +1,16 @@
-import React, { useEffect } from "react"
+import React, { useContext, useState, memo, useEffect } from "react"
 import { CDN_IMG_URL } from "../constant";
+import { CartContext } from "../../utils/context/CartContext";
+import QuantityButton from "./QuantityButton";
 
 const MenuCard = ({ item }) => {
 
-    console.log(item);
+    const { cartState, addToCart } = useContext(CartContext)
+
+    useEffect(() => {
+        localStorage.setItem("cartData", JSON.stringify(cartState))
+    }, [cartState])
+
     return (
         <>
             <div className="flex justify-between items-center my-12 gap-2">
@@ -12,11 +19,17 @@ const MenuCard = ({ item }) => {
                     <p className="">₹{item?.price / 100 || item?.defaultPrice / 100}</p >
                     <p className="font-sm text-gray-500">{item?.description?.substring(0, 200)}</p>
                 </div>
-                <div className="flex flex-col gap-1 justify-center items-center">
+                <div className="flex flex-col gap-3 justify-center items-center">
                     <div className="w-32">
                         <img className="rounded-md" src={CDN_IMG_URL + item?.imageId} alt="Menu Item Image" />
                     </div>
-                    <button className="bg-primary text-sm text-secondary p-2 rounded-lg font-semibold">Add +</button>
+                    {
+                        cartState.items[item.id] ? (
+                            <QuantityButton item={item} />
+                        )
+                            :
+                            <button className="bg-primary text-lg text-secondary px-3 py-1 rounded-lg font-semibold" onClick={() => addToCart(item)}>Add +</button>
+                    }
                 </div>
             </div>
             <hr />

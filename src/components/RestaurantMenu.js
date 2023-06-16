@@ -5,7 +5,7 @@ import ShimmerCard from './Shimmer'
 import MenuCategoryList from './MenuCategoryList';
 import { CDN_IMG_URL, RESTAURANT_MENU_URL } from '../constant';
 import { AiFillStar } from "react-icons/ai"
-import useMenu from '../../hooks/useMenu';
+import useMenu from '../../utils/hooks/useMenu';
 
 
 const RestaurantMenu = () => {
@@ -30,7 +30,7 @@ const RestaurantMenu = () => {
                         </div>
                         <div className='flex flex-col gap-1'>
                             <h2 className='text-2xl font-bold'>{info?.name}</h2>
-                            <p className='text-sm text-gray-500'>{info?.cuisines.join(" ")}</p>
+                            <p className='text-sm text-gray-500'>{info?.cuisines?.join(" ")}</p>
                             <p className='text-sm text-gray-500'>{info?.areaName}</p>
                         </div>
                     </div>

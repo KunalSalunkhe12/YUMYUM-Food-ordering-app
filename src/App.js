@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import RestaurantList from "./components/RestaurantList";
 import RestaurantMenu from "./components/RestaurantMenu";
@@ -7,6 +7,8 @@ import Header from "./components/Header";
 import About from "./components/About";
 import Help from "./components/Help";
 import Profile from "./components/Profile";
+import Cart from "./components/Cart";
+import { CartProvider } from "../utils/context/CartContext";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 
@@ -22,7 +24,7 @@ const AppLayout = () => {
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <AppLayout />,
+        element: <CartProvider><AppLayout /></CartProvider>,
         errorElement: <Error />,
         children: [
             {
@@ -46,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path: "/help",
                 element: <Help />,
+            },
+            {
+                path: "/cart",
+                element: <Cart />
             }
         ]
     }

@@ -25,8 +25,8 @@ class Profile extends React.Component {
     render() {
         return (
             <>
-                <div>Name: {this.state.userInfo.name}</div>
-                <p>Location: {this.state.userInfo.location}</p>
+                <div>Name: {this.state?.userInfo?.name}</div>
+                <p>Location: {this.state?.userInfo?.location}</p>
             </>
         )
     }

@@ -8,7 +8,6 @@ const useMenu = (id) => {
     const getRestaurantMenu = async () => {
         setIsError(false)
         try {
-            console.log(id);
             const response = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.517929&lng=88.38341199999999&restaurantId=${id}`)
             const json = await response.json()
 

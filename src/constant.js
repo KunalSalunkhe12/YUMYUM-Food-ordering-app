@@ -16,6 +16,7 @@ export const HELP_FAQ = [
         answer: "At YumYum, your satisfaction is our top priority. We strive to provide excellent customer service, ensuring that your orders are accurate, on time, and prepared with care. Our dedicated support team is always ready to assist you with any queries or concerns you may have, making your experience with YumYum as delightful as the food itself."
     }
 ]
+//Dummy data
 export const restaurantList = [
     {
         type: "restaurant",

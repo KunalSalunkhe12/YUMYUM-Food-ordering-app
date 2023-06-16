@@ -15,9 +15,10 @@ const useFetchRestaurants = (offset) => {
             const response = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.3667296&lng=72.819814&offset=${offset}&sortBy=RELEVANCE&pageType=SEE_ALL&page_type=DESKTOP_SEE_ALL_LISTING`)
             const json = await response.json()
             if (json?.data?.cards) {
-                setHasMore(true)
-                setRestaurants(prevRestaurants => [...prevRestaurants, ...json?.data?.cards])
+                const restaurants = json?.data?.cards.filter((card) => card.cardType === "restaurant")
+                setRestaurants(prevRestaurants => [...prevRestaurants, ...restaurants])
                 setTotalRestaurants(json?.data?.totalSize)
+                setHasMore(true)
                 setIsLoading(false)
             } else {
                 setHasMore(false)

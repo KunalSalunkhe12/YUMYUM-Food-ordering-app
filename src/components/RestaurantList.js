@@ -3,7 +3,7 @@ import RestaurantCard from "./RestaurantCard"
 import Error from "./Error"
 import { BiSearchAlt2 } from "react-icons/bi"
 import Shimmer from "./Shimmer"
-import useFetchRestaurants from "../../hooks/useFetchRestaurants"
+import useFetchRestaurants from "../../utils/hooks/useFetchRestaurants"
 import ShimmerCard from "./ShimmerCard"
 
 const RestaurantList = () => {
@@ -50,7 +50,7 @@ const RestaurantList = () => {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-20 p-16">
                     {
-                        restaurants.map((restaurant, index) => {
+                        restaurants.map((restaurant) => {
                             return (
                                 <RestaurantCard key={restaurant?.data?.data?.uuid} restaurant={restaurant?.data?.data} />
                             )
