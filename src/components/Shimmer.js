@@ -6,7 +6,6 @@ const Shimmer = () => {
         <>
             <div className='flex justify-between pt-28 px-16 pb-6'>
                 <div className='h-8 bg-gray-200 w-60'></div>
-                <div className='h-11 bg-gray-200 w-96'></div>
             </div>
             <hr />
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-20 p-16'>

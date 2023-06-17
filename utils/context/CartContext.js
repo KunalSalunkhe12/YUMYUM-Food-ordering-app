@@ -8,6 +8,7 @@ export const CartDispatchContext = createContext(null)
 
 export const CartProvider = ({ children }) => {
     const storedCartData = localStorage.getItem("cartData");
+
     const initialState = {
         items: {}
     }

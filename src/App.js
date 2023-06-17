@@ -10,6 +10,7 @@ import Profile from "./components/Profile";
 import Cart from "./components/Cart";
 import { CartProvider } from "../utils/context/CartContext";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Search from "./components/Search";
 
 
 const AppLayout = () => {
@@ -24,7 +25,11 @@ const AppLayout = () => {
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <CartProvider><AppLayout /></CartProvider>,
+        element: (
+            <CartProvider>
+                <AppLayout />
+            </CartProvider>
+        ),
         errorElement: <Error />,
         children: [
             {
@@ -36,7 +41,11 @@ const router = createBrowserRouter([
                 element: <RestaurantMenu />
             },
             {
-                path: "/about",
+                path: "search",
+                element: <Search />
+            },
+            {
+                path: "about",
                 element: <About />,
                 children: [
                     {
@@ -46,11 +55,11 @@ const router = createBrowserRouter([
                 ]
             },
             {
-                path: "/help",
+                path: "help",
                 element: <Help />,
             },
             {
-                path: "/cart",
+                path: "cart",
                 element: <Cart />
             }
         ]

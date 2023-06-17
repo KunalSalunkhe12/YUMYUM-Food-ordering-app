@@ -7,12 +7,9 @@ import useFetchRestaurants from "../../utils/hooks/useFetchRestaurants"
 import ShimmerCard from "./ShimmerCard"
 
 const RestaurantList = () => {
-    const [searchInput, setSearchInput] = useState("")
     const [offset, setOffset] = useState(15)
-
     const { restaurants, totalRestaurants, isLoading, hasMore, isError } = useFetchRestaurants(offset)
 
-    // const filteredRestaurants = restaurants?.filter(restaurant => restaurant?.data?.data?.name?.toLowerCase().includes(searchInput.trim().toLowerCase()))
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -40,12 +37,8 @@ const RestaurantList = () => {
         restaurants.length > 0 ?
             <>
                 <div className="px-16 pt-24 text-2xl font-semibold">
-                    <div className="border-b-2 p-3 flex justify-between items-center">
+                    <div className="border-b-2 p-3">
                         <div>{totalRestaurants} Restaurants</div>
-                        <div className="bg-primary w-full md:w-1/2 lg:w-1/3 rounded-md py-2 px-3 flex items-center">
-                            <input className="bg-primary text-secondary text-lg font-semibold w-full outline-none border-0" type="text" value={searchInput} placeholder="Search you favourite restaurants here...." onChange={e => setSearchInput(e.target.value)} />
-                            <BiSearchAlt2 className="text-secondary text-xl" />
-                        </div>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-20 p-16">

@@ -16,7 +16,7 @@ export const cartReducer = (state, action) => {
             } else {
                 delete state.items[action.id]
             }
-            return { ...state, items: { ...state.items } }
+            return { ...state }
         default:
             throw Error('Unknown action: ' + action.type);
     }
