@@ -4,15 +4,13 @@ import { cartReducer } from './cartReducer';
 export const CartContext = createContext(null)
 export const CartDispatchContext = createContext(null)
 
-
+const storedCartData = localStorage.getItem("cartData");
+const initialState = {
+    items: {}
+}
+const initialCartState = storedCartData ? JSON.parse(storedCartData) : initialState;
 
 export const CartProvider = ({ children }) => {
-    const storedCartData = localStorage.getItem("cartData");
-
-    const initialState = {
-        items: {}
-    }
-    const initialCartState = storedCartData ? JSON.parse(storedCartData) : initialState;
 
     const [cartState, dispatch] = useReducer(cartReducer, initialCartState)
 

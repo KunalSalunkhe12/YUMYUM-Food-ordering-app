@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import RestaurantList from "./components/RestaurantList";
 import RestaurantMenu from "./components/RestaurantMenu";
@@ -10,8 +10,8 @@ import Profile from "./components/Profile";
 import Cart from "./components/Cart";
 import { CartProvider } from "../utils/context/CartContext";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Search from "./components/Search";
-
+import { lazy } from "react";
+const Search = lazy(() => import("./components/Search.js"))
 
 const AppLayout = () => {
     return (
@@ -42,7 +42,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "search",
-                element: <Search />
+                element: (
+                    <Suspense>
+                        <Search />
+                    </Suspense>
+                )
             },
             {
                 path: "about",

@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, Link } from "react-router-dom"
 import Logo from "../../assets/yumyum-background.svg"
 
 
@@ -16,8 +16,13 @@ const About = () => {
                 <p className="w-1/2 my-6 text-center">
                     Our mission is to make food ordering convenient, effortless, and enjoyable. With just a few clicks or taps, you can explore a wide variety of cuisines, discover new flavors, and have your favorite dishes delivered straight to you. Say goodbye to long waits and limited choices. YumYum brings a world of culinary delights to your fingertips.
                 </p>
+                <div>
+                    <span>Made by: </span>
+                    <Link className="font-medium text-blue-500" to="/about/profile">Kunal Salunkhe</Link>
+                </div>
             </div>
             <Outlet />
+
         </>
 
     )

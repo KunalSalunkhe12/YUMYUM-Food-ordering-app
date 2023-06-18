@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from "react-router-dom"
 import { CartContext } from '../../utils/context/CartContext'
 import MenuCard from './MenuCard'
 
@@ -18,14 +19,14 @@ const Cart = () => {
     return (
         <div className='flex flex-col pt-24 gap-6 items-center'>
             {
-                cartState.items ?
+                Object.values(cartState.items).length > 0 ?
                     <>
                         <h1 className='text-3xl font-semibold'>Checkout</h1>
                         <div className='w-2/5 shadow-2xl rounded-lg'>
                             <div className='h-80 px-4 overflow-y-auto'>
                                 {
                                     Object.values(cartState.items).map(cartItem => {
-                                        return <MenuCard item={cartItem.item} />
+                                        return <MenuCard key={cartItem.id} item={cartItem.item} />
                                     })
                                 }
                                 <div className='p-4'>
@@ -54,7 +55,13 @@ const Cart = () => {
                                 <button className='text-primary bg-secondary p-2 rounded-lg'>Checkout</button>
                             </div>
                         </div>
-                    </> : <div>Your Cart is Empty!</div>
+                    </> :
+                    <div className='flex flex-col justify-center gap-5 mt-10'>
+                        <p className='text-center text-xl font-semibold'>Your Cart is Empty!</p>
+                        <Link to='/'>
+                            <button className='text-secondary bg-primary font-semibold p-2 rounded-lg'>Check All Restaurants</button>
+                        </Link>
+                    </div>
             }
 
         </div>

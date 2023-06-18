@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import Error from './Error';
-import ShimmerCard from './Shimmer'
+import ShimmerCard from './Shimmer/ShimmerCard'
 import MenuCategoryList from './MenuCategoryList';
-import { CDN_IMG_URL, RESTAURANT_MENU_URL } from '../constant';
+import { CDN_IMG_URL } from '../constant';
 import { AiFillStar } from "react-icons/ai"
+import Logo from "../../assets/yumyum-background.svg"
 import useMenu from '../../utils/hooks/useMenu';
 
 
@@ -26,7 +27,11 @@ const RestaurantMenu = () => {
                 <div className='flex justify-between items-center bg-primary text-white p-2'>
                     <div className='flex items-center gap-4'>
                         <div className='w-44'>
-                            <img className="rounded-lg object-contain" src={CDN_IMG_URL + info?.cloudinaryImageId} alt="Restaurant Image" />
+                            {
+                                info?.cloudinaryImageId ?
+                                    <img className="rounded-lg object-contain" src={CDN_IMG_URL + info?.cloudinaryImageId} alt="Restaurant Image" /> :
+                                    <img className="mx-auto w-1/2 rounded-t-lg" src={Logo} alt="Logo" />
+                            }
                         </div>
                         <div className='flex flex-col gap-1'>
                             <h2 className='text-2xl font-bold'>{info?.name}</h2>

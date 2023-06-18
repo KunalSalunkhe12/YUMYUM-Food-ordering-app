@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef, useCallback } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import RestaurantCard from "./RestaurantCard"
 import Error from "./Error"
-import { BiSearchAlt2 } from "react-icons/bi"
-import Shimmer from "./Shimmer"
+import HomeShimmer from "./Shimmer/HomeShimmer"
 import useFetchRestaurants from "../../utils/hooks/useFetchRestaurants"
-import ShimmerCard from "./ShimmerCard"
+import ShimmerCard from "./Shimmer/ShimmerCard"
 
 const RestaurantList = () => {
     const [offset, setOffset] = useState(15)
     const { restaurants, totalRestaurants, isLoading, hasMore, isError } = useFetchRestaurants(offset)
 
+    console.log(restaurants);
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -53,7 +53,7 @@ const RestaurantList = () => {
                 </div>
                 <div className="invisible h-12" ref={loader}>Loader</div>
             </> :
-            <Shimmer />
+            <HomeShimmer />
     )
 }
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai"
 import { HELP_FAQ } from '../constant'
-import { Outlet } from 'react-router-dom'
 
 const Section = ({ id, question, answer, isVisible, setIsVisible }) => {
     return (
@@ -32,7 +31,6 @@ const Help = () => {
                     HELP_FAQ.map(faq => <Section key={faq.id} id={faq.id} question={faq.question} answer={faq.answer} isVisible={isVisible} setIsVisible={setIsVisible} />)
                 }
             </div>
-            <Outlet />
         </>
     )
 }
