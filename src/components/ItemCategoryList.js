@@ -1,11 +1,11 @@
 import React from 'react'
 import MenuCard from './MenuCard'
 
-const MenuCategoryList = ({ title, itemCards }) => {
+const ItemCategoryList = ({ itemCategory }) => {
     return (
         <div>
-            <h2 className='text-xl font-bold'>{title}</h2>
-            {itemCards.map((item => {
+            <h3 className='text-lg font-semibold'>{itemCategory?.title}</h3>
+            {itemCategory?.itemCards.map((item => {
                 return <MenuCard key={item?.card?.info.id} item={item?.card?.info} />
             }))}
             <hr className='my-4 mx-auto w-3/2 h-3 bg-slate-100' />
@@ -13,4 +13,4 @@ const MenuCategoryList = ({ title, itemCards }) => {
     )
 }
 
-export default MenuCategoryList
+export default ItemCategoryList

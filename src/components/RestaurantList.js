@@ -9,7 +9,6 @@ const RestaurantList = () => {
     const [offset, setOffset] = useState(15)
     const { restaurants, totalRestaurants, isLoading, hasMore, isError } = useFetchRestaurants(offset)
 
-    console.log(restaurants);
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

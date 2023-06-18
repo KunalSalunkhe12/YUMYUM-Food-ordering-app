@@ -19,7 +19,7 @@ const MenuCard = ({ item }) => {
         <>
             <div className="flex justify-between items-center my-6 gap-2">
                 <div className="leading-7">
-                    <p className="font-bold">{item?.name}</p>
+                    <p className="font-medium">{item?.name}</p>
                     <p className="">₹{item?.price / 100 || item?.defaultPrice / 100}</p >
                     <p className="font-sm text-gray-500">{item?.description?.substring(0, 100)}</p>
                 </div>

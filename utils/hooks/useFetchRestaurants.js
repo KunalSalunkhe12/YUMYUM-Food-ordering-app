@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { API_URL } from '../../src/constant'
 
 const useFetchRestaurants = (offset) => {
     const [restaurants, setRestaurants] = useState([])
@@ -12,7 +13,7 @@ const useFetchRestaurants = (offset) => {
         setIsError(false)
 
         try {
-            const response = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.3667296&lng=72.819814&offset=${offset}&sortBy=RELEVANCE&pageType=SEE_ALL&page_type=DESKTOP_SEE_ALL_LISTING`)
+            const response = await fetch(`${API_URL}/restaurants?offset=${offset}`)
             const json = await response.json()
             if (json?.data?.cards) {
                 const restaurants = json?.data?.cards.filter((card) => card.cardType === "restaurant")

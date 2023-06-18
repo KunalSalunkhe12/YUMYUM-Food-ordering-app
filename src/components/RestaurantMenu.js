@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import Error from './Error';
-import ShimmerCard from './Shimmer/ShimmerCard'
-import MenuCategoryList from './MenuCategoryList';
+import MenuShimmer from './Shimmer/MenuShimmer';
 import { CDN_IMG_URL } from '../constant';
 import { AiFillStar } from "react-icons/ai"
 import Logo from "../../assets/yumyum-background.svg"
 import useMenu from '../../utils/hooks/useMenu';
+import ItemCategoryList from './ItemCategoryList';
+import NestedItemCategoryList from './NestedItemCategoryList';
 
 
 const RestaurantMenu = () => {
@@ -51,15 +52,11 @@ const RestaurantMenu = () => {
                 <hr />
                 <div className='my-4'>
                     {
-                        menu.map(item => {
-                            return (
-                                <MenuCategoryList key={item?.card?.card?.title} title={item?.card?.card?.title} itemCards={item?.card?.card?.itemCards} />
-                            )
-                        })
+                        menu.map(item => item.categories ? (<NestedItemCategoryList key={item.title} nestedCategory={item} />) : (<ItemCategoryList key={item.title} itemCategory={item} />))
                     }
 
                 </div>
-            </div > : <ShimmerCard />
+            </div > : <MenuShimmer />
     )
 }
 
