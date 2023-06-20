@@ -35,12 +35,12 @@ const RestaurantList = () => {
     return (
         restaurants.length > 0 ?
             <>
-                <div className="px-16 pt-24 text-2xl font-semibold">
+                <div className="px-8 mt-16 md:px-16 md:mt-24 text-2xl font-semibold">
                     <div className="border-b-2 p-3">
                         <div>{totalRestaurants} Restaurants</div>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-20 p-16">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-20 p-8 md:p-16">
                     {
                         restaurants.map((restaurant) => {
                             return (

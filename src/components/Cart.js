@@ -17,7 +17,7 @@ const Cart = () => {
     const TotalPrize = itemTotal + deliveryCharge + platformFee + GST
 
     return (
-        <div className='flex flex-col pt-24 gap-6 items-center'>
+        <div className='flex flex-col mt-24 gap-6 items-center'>
             {
                 Object.values(cartState.items).length > 0 ?
                     <>

@@ -5,8 +5,8 @@ import Logo from "../../assets/yumyum-background.svg"
 const About = () => {
     return (
         <>
-            <div className="flex flex-col items-center py-20">
-                <div className="w-32 mx-auto my-10">
+            <div className="flex flex-col items-center my-24">
+                <div className="w-32 mx-auto">
                     <img src={Logo} alt="YumYum Logo" />
                 </div>
                 <h2 className="text-xl font-bold">WelCome to YumYum!</h2>

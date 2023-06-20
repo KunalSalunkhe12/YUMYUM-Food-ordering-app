@@ -24,7 +24,7 @@ const RestaurantMenu = () => {
 
     return (
         menu ?
-            <div className='w-3/4 mx-auto py-28 px-4'>
+            <div className='w-3/4 mx-auto mt-24 px-4'>
                 <div className='flex justify-between items-center bg-primary text-white p-2'>
                     <div className='flex items-center gap-4'>
                         <div className='w-44'>
