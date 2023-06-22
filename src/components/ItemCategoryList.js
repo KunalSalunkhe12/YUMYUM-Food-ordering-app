@@ -4,7 +4,7 @@ import MenuCard from './MenuCard'
 const ItemCategoryList = ({ itemCategory }) => {
     return (
         <div>
-            <h3 className='text-lg font-semibold'>{itemCategory?.title}</h3>
+            <h3 className='text-base md:text-xl font-semibold'>{itemCategory?.title}</h3>
             {itemCategory?.itemCards.map((item => {
                 return <MenuCard key={item?.card?.info.id} item={item?.card?.info} />
             }))}

@@ -17,14 +17,14 @@ const MenuCard = ({ item }) => {
 
     return (
         <>
-            <div className="flex justify-between items-center my-6 gap-2">
-                <div className="leading-7">
-                    <p className="font-medium">{item?.name}</p>
-                    <p className="">₹{item?.price / 100 || item?.defaultPrice / 100}</p >
-                    <p className="font-sm text-gray-500">{item?.description?.substring(0, 100)}</p>
+            <div className="flex justify-between items-center my-6 gap-6">
+                <div className="leading-8">
+                    <p className="font-medium text-sm md:text-base">{item?.name}</p>
+                    <p className="text-sm md:text-base">₹{item?.price / 100 || item?.defaultPrice / 100}</p >
+                    <p className="text-xs md:text-sm text-gray-500">{item?.description?.substring(0, 100)}</p>
                 </div>
                 <div className="flex flex-col gap-3 justify-center items-center">
-                    <div className="w-32">
+                    <div className="w-20 sm:w-24 md:w-28 lg:w-32">
                         {
                             item?.imageId && <img className="rounded-md" src={CDN_IMG_URL + item?.imageId} alt="Menu Item Image" />
                         }
@@ -32,7 +32,7 @@ const MenuCard = ({ item }) => {
                     {
                         cartState.items[item.id] ?
                             <QuantityButton item={item} /> :
-                            <button className="bg-primary text-lg text-secondary px-3 py-1 rounded-lg font-semibold" onClick={() => addToCart(item)}>Add +</button>
+                            <button className="bg-primary text-base md:text-lg text-secondary px-3 py-1 rounded-lg font-semibold" onClick={() => addToCart(item)}>Add +</button>
                     }
                 </div>
             </div>
