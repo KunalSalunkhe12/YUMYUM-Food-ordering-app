@@ -10,7 +10,7 @@ const RestaurantCard = ({ restaurant }) => {
             <Link to={'/restaurant/' + restaurant?.id}>
                 {
                     restaurant?.cloudinaryImageId ?
-                        <img className=" object-contain rounded-t-lg" src={CDN_IMG_URL + restaurant?.cloudinaryImageId} alt="Restaurant Image" /> :
+                        <img className="object-contain w-full rounded-t-lg" src={CDN_IMG_URL + restaurant?.cloudinaryImageId} alt="Restaurant Image" /> :
                         <img className="mx-auto w-1/2 rounded-t-lg" src={Logo} alt="Logo" />
                 }
                 <div className="card-info p-2 flex flex-col gap-4">
