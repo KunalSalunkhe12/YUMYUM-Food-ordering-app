@@ -82,7 +82,6 @@ const Header = () => {
                                 <AiOutlineShoppingCart className="text-xl" />
                                 <span>{numberOfItems}</span>
                             </div>
-
                         </NavLink>
                     </li>
                 </ul>
