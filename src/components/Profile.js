@@ -29,7 +29,7 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <div className="w-1/2 mx-auto mb-5 flex justify-center flex-col gap-4 text-center">
+            <div className="md:w-1/2 mx-auto mb-24 flex justify-center flex-col gap-4 text-center">
                 < img className="w-40 m-auto rounded-full" src={this.state?.userInfo?.avatar_url} alt="" />
                 <p className="font-medium">{this.state?.userInfo?.bio}</p>
                 <p>Location: {this.state?.userInfo?.location}</p>
