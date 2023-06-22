@@ -17,12 +17,12 @@ const Cart = () => {
     const TotalPrize = itemTotal + deliveryCharge + platformFee + GST
 
     return (
-        <div className='flex flex-col mt-24 gap-6 items-center'>
+        <div className='flex flex-col my-24 gap-6 items-center p-3'>
             {
                 Object.values(cartState.items).length > 0 ?
                     <>
-                        <h1 className='text-3xl font-semibold'>Checkout</h1>
-                        <div className='w-2/5 shadow-2xl rounded-lg'>
+                        <h1 className='text-xl md:text-2xl lg:text-3xl font-semibold'>Checkout</h1>
+                        <div className='sm:w-3/4 md:w-2/3 lg:w-2/5 shadow-2xl rounded-lg'>
                             <div className='h-80 px-4 overflow-y-auto'>
                                 {
                                     Object.values(cartState.items).map(cartItem => {
@@ -30,7 +30,7 @@ const Cart = () => {
                                     })
                                 }
                                 <div className='p-4'>
-                                    <p className='text-lg font-semibold'>Bill details</p>
+                                    <p className='text-base md:text-lg font-semibold'>Bill details</p>
                                     <div className='flex justify-between mt-1'>
                                         <div className=''>Item Total</div>
                                         <div>₹ {itemTotal}</div>
@@ -50,7 +50,7 @@ const Cart = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='flex justify-between items-center p-4 bg-primary text-xl font-semibold'>
+                            <div className='flex justify-between items-center p-4 bg-primary text-base md:text-lg lg:text-xl font-semibold'>
                                 <p className='text-white'>To Pay: ₹ {TotalPrize}</p>
                                 <button className='text-primary bg-secondary p-2 rounded-lg'>Checkout</button>
                             </div>
