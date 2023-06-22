@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { API_URL } from '../../src/constant'
 
 const useMenu = (id) => {
 
@@ -9,7 +8,7 @@ const useMenu = (id) => {
     const getRestaurantMenu = async () => {
         setIsError(false)
         try {
-            const response = await fetch(`${API_URL}/menu?id=${id}`)
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/menu?id=${id}`)
             const json = await response.json()
             const ItemCategory = "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
             const NestedItemCategory = "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"

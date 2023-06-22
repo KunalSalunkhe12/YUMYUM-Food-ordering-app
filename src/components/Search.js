@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { BiSearchAlt2 } from "react-icons/bi"
 import RestaurantCard from './RestaurantCard';
 import SearchShimmer from './Shimmer/SearchShimmer';
-import { API_URL } from '../constant';
 
 const Search = () => {
     const [searchInput, setSearchInput] = useState('');
@@ -12,7 +11,7 @@ const Search = () => {
     const getSearchRestaurants = async () => {
         setIsLoading(true)
         try {
-            const response = await fetch(`${API_URL}/search?searchInput=${searchInput}`)
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/search?searchInput=${searchInput}`)
             const json = await response.json()
             const restaurantsData = json?.data?.cards[0]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards;
             setSuggestedRestaurants(() => restaurantsData ? restaurantsData : [])

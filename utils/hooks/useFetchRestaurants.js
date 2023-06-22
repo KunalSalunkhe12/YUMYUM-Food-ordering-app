@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { API_URL } from '../../src/constant'
 
 const useFetchRestaurants = (offset) => {
     const [restaurants, setRestaurants] = useState([])
@@ -13,7 +12,7 @@ const useFetchRestaurants = (offset) => {
         setIsError(false)
 
         try {
-            const response = await fetch(`${API_URL}/restaurants?offset=${offset}`)
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/restaurants?offset=${offset}`)
             const json = await response.json()
             if (json?.data?.cards) {
                 const restaurants = json?.data?.cards.filter((card) => card.cardType === "restaurant")
