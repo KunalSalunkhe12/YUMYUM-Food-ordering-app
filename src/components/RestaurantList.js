@@ -48,7 +48,11 @@ const RestaurantList = () => {
                             )
                         })
                     }
-                    {isLoading && <ShimmerCard />}
+                    {isLoading &&
+                        <>
+                            <ShimmerCard />
+                        </>
+                    }
                 </div>
                 <div className="invisible h-12" ref={loader}>Loader</div>
             </> :
