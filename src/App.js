@@ -9,16 +9,16 @@ import Help from "./components/Help";
 import Profile from "./components/Profile";
 import Cart from "./components/Cart";
 import { CartProvider } from "../utils/context/CartContext";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet, redirect } from "react-router-dom";
 import { lazy } from "react";
 const Search = lazy(() => import("./components/Search.js"))
 
 const AppLayout = () => {
     return (
-        <>
+        <CartProvider>
             <Header />
             <Outlet />
-        </>
+        </CartProvider>
     )
 }
 
@@ -26,9 +26,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: (
-            <CartProvider>
-                <AppLayout />
-            </CartProvider>
+            <AppLayout />
         ),
         errorElement: <Error />,
         children: [
@@ -54,7 +52,7 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: "profile",
-                        element: <Profile />
+                        element: <Profile />,
                     }
                 ]
             },

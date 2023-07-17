@@ -2,7 +2,6 @@ import { createContext, useReducer } from 'react';
 import { cartReducer } from './cartReducer';
 
 export const CartContext = createContext(null)
-export const CartDispatchContext = createContext(null)
 
 const storedCartData = localStorage.getItem("cartData");
 const initialState = {
