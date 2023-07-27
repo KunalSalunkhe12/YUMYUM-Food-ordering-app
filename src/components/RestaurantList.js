@@ -13,6 +13,9 @@ const RestaurantList = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    // HAD TO REMOVE PAGINATION DUE TO API LIMITATIONS
+    // SWIGGY'S API NO LONGER SENDS PAGE OFFSET IN RESPONSE 
+
     // const loader = useRef(null)
     // useEffect(() => {
     //     const observer = new IntersectionObserver(entries => {
