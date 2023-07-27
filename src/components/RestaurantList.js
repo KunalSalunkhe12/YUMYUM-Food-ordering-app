@@ -6,26 +6,26 @@ import useFetchRestaurants from "../../utils/hooks/useFetchRestaurants"
 import ShimmerCard from "./Shimmer/ShimmerCard"
 
 const RestaurantList = () => {
-    const [offset, setOffset] = useState(15)
-    const { restaurants, totalRestaurants, isLoading, hasMore, isError } = useFetchRestaurants(offset)
+    // const [offset, setOffset] = useState(15)
+    const { restaurants, totalRestaurants, isLoading, hasMore, isError } = useFetchRestaurants()
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    const loader = useRef(null)
-    useEffect(() => {
-        const observer = new IntersectionObserver(entries => {
-            if (isLoading) return
-            if (entries[0].isIntersecting && hasMore) {
-                setOffset(prevOffset => prevOffset + 16)
-            }
-        })
-        if (loader.current) observer.observe(loader.current)
-        return () => {
-            observer.disconnect()
-        }
-    }, [hasMore])
+    // const loader = useRef(null)
+    // useEffect(() => {
+    //     const observer = new IntersectionObserver(entries => {
+    //         if (isLoading) return
+    //         if (entries[0].isIntersecting && hasMore) {
+    //             setOffset(prevOffset => prevOffset + 16)
+    //         }
+    //     })
+    //     if (loader.current) observer.observe(loader.current)
+    //     return () => {
+    //         observer.disconnect()
+    //     }
+    // }, [hasMore])
 
 
     if (isError) {
@@ -44,7 +44,7 @@ const RestaurantList = () => {
                     {
                         restaurants.map((restaurant) => {
                             return (
-                                <RestaurantCard key={restaurant?.data?.data?.uuid} restaurant={restaurant?.data?.data} />
+                                <RestaurantCard key={restaurant?.info?.id} restaurant={restaurant?.info} />
                             )
                         })
                     }
@@ -52,7 +52,7 @@ const RestaurantList = () => {
                         <ShimmerCard />
                     }
                 </div>
-                <div className="invisible h-12" ref={loader}>Loader</div>
+                {/* <div className="invisible h-12">Loader</div> */}
             </> :
             <HomeShimmer />
     )

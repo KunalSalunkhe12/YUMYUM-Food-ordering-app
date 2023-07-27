@@ -1,42 +1,40 @@
 import { useState, useEffect } from 'react'
 
-const useFetchRestaurants = (offset) => {
+const useFetchRestaurants = () => {
     const [restaurants, setRestaurants] = useState([])
-    const [totalRestaurants, setTotalRestaurants] = useState()
     const [isLoading, setIsLoading] = useState(true)
-    const [hasMore, setHasMore] = useState(false)
     const [isError, setIsError] = useState(false)
+    // const [totalRestaurants, setTotalRestaurants] = useState()
+    // const [hasMore, setHasMore] = useState(false)
 
     const getAllRestaurants = async () => {
         setIsLoading(true)
         setIsError(false)
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/restaurants?offset=${offset}`)
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/restaurants`)
             const json = await response.json()
-            if (json?.data?.cards) {
-                const restaurants = json?.data?.cards.filter((card) => card.cardType === "restaurant")
-                setRestaurants(prevRestaurants => [...prevRestaurants, ...restaurants])
-                setTotalRestaurants(json?.data?.totalSize)
-                setHasMore(true)
-                setIsLoading(false)
-            } else {
-                setHasMore(false)
-                setIsLoading(false)
-            }
 
+            const restaurantsCard = json?.data?.cards?.filter((card) => card.card.card.id === "restaurant_grid_listing")
+            const restaurants = restaurantsCard[0].card.card.gridElements.infoWithStyle.restaurants
+            setRestaurants(prevRestaurants => [...prevRestaurants, ...restaurants])
+            // setTotalRestaurants(json?.data?.totalSize)
+            // setHasMore(true)
         } catch (error) {
             setIsError(true)
             console.log(error);
+        }
+        finally {
+            setIsLoading(false)
         }
     }
 
     useEffect(() => {
         getAllRestaurants()
-    }, [offset])
+    }, [])
 
 
-    return { restaurants, totalRestaurants, isLoading, hasMore, isError }
+    return { restaurants, isLoading, isError }
 
 }
 
