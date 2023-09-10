@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useEffect } from "react"
 import RestaurantCard from "./RestaurantCard"
 import Error from "./Error"
 import HomeShimmer from "./Shimmer/HomeShimmer"
@@ -6,29 +6,11 @@ import useFetchRestaurants from "../../utils/hooks/useFetchRestaurants"
 import ShimmerCard from "./Shimmer/ShimmerCard"
 
 const RestaurantList = () => {
-    // const [offset, setOffset] = useState(15)
-    const { restaurants, totalRestaurants, isLoading, hasMore, isError } = useFetchRestaurants()
+    const { restaurants, totalRestaurants, isLoading, isError } = useFetchRestaurants()
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
-    // HAD TO REMOVE PAGINATION DUE TO API LIMITATIONS
-    // SWIGGY'S API NO LONGER SENDS PAGE OFFSET IN RESPONSE 
-
-    // const loader = useRef(null)
-    // useEffect(() => {
-    //     const observer = new IntersectionObserver(entries => {
-    //         if (isLoading) return
-    //         if (entries[0].isIntersecting && hasMore) {
-    //             setOffset(prevOffset => prevOffset + 16)
-    //         }
-    //     })
-    //     if (loader.current) observer.observe(loader.current)
-    //     return () => {
-    //         observer.disconnect()
-    //     }
-    // }, [hasMore])
 
 
     if (isError) {
@@ -55,7 +37,6 @@ const RestaurantList = () => {
                         <ShimmerCard />
                     }
                 </div>
-                {/* <div className="invisible h-12">Loader</div> */}
             </> :
             <HomeShimmer />
     )

@@ -4,8 +4,6 @@ const useFetchRestaurants = () => {
     const [restaurants, setRestaurants] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [isError, setIsError] = useState(false)
-    // const [totalRestaurants, setTotalRestaurants] = useState()
-    // const [hasMore, setHasMore] = useState(false)
 
     const getAllRestaurants = async () => {
         setIsLoading(true)
@@ -17,9 +15,8 @@ const useFetchRestaurants = () => {
 
             const restaurantsCard = json?.data?.cards?.filter((card) => card.card.card.id === "restaurant_grid_listing")
             const restaurants = restaurantsCard[0].card.card.gridElements.infoWithStyle.restaurants
+            console.log(restaurants)
             setRestaurants(prevRestaurants => [...prevRestaurants, ...restaurants])
-            // setTotalRestaurants(json?.data?.totalSize)
-            // setHasMore(true)
         } catch (error) {
             setIsError(true)
             console.log(error);
