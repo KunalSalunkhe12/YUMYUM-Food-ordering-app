@@ -13,7 +13,6 @@ import NestedItemCategoryList from './NestedItemCategoryList';
 const RestaurantMenu = () => {
     const { id } = useParams()
     const { info, menu, isError } = useMenu(id)
-    console.log(menu);
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

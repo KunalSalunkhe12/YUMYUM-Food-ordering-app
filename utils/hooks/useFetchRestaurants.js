@@ -10,13 +10,9 @@ const useFetchRestaurants = () => {
         setIsError(false)
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/restaurants`)
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/restaurants`)
             const json = await response.json()
-
-            const restaurantsCard = json?.data?.cards?.filter((card) => card.card.card.id === "restaurant_grid_listing")
-            const restaurants = restaurantsCard[0].card.card.gridElements.infoWithStyle.restaurants
-            console.log(restaurants)
-            setRestaurants(prevRestaurants => [...prevRestaurants, ...restaurants])
+            setRestaurants(json)
         } catch (error) {
             setIsError(true)
             console.log(error);
