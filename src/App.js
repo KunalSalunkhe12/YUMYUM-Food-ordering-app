@@ -1,38 +1,35 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
+import RootLayout from "./components/RootLayout";
 import RestaurantList from "./components/RestaurantList";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Error from "./components/Error";
-import Header from "./components/Header";
 import About from "./components/About";
 import Help from "./components/Help";
 import Profile from "./components/Profile";
 import Cart from "./components/Cart";
-import { CartProvider } from "../utils/context/CartContext";
+import Auth from "./components/Auth";
+
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { lazy } from "react";
 const Search = lazy(() => import("./components/Search.js"))
 
-const AppLayout = () => {
-    return (
-        <CartProvider>
-            <Header />
-            <Outlet />
-        </CartProvider>
-    )
-}
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: (
-            <AppLayout />
+            <RootLayout />
         ),
         errorElement: <Error />,
         children: [
             {
                 index: true,
                 element: <RestaurantList />
+            },
+            {
+                path: "auth",
+                element: <Auth />
             },
             {
                 path: "restaurant/:id",
