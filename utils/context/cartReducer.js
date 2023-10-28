@@ -9,14 +9,20 @@ export const cartReducer = (state, action) => {
                     quantity: quantity
                 }
             }
-            return { ...state, items: { ...state.items, ...newItem } }
+            const newAddState = { ...state, items: { ...state.items, ...newItem } }
+            localStorage.setItem("cartData", JSON.stringify(newAddState))
+            return newAddState
+
         case 'REMOVE_FROM_CART':
             if (state.items[action.id].quantity > 1) {
                 state.items[action.id].quantity -= 1;
             } else {
                 delete state.items[action.id]
             }
-            return { ...state }
+            const newRemoveState = { ...state }
+            localStorage.setItem("cartData", JSON.stringify(newRemoveState))
+            return newRemoveState
+
         default:
             throw Error('Unknown action: ' + action.type);
     }

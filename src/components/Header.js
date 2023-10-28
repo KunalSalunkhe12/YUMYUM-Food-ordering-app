@@ -11,8 +11,6 @@ const Header = () => {
 
     const numberOfItems = Object.values(cartState.items).length
 
-    console.log("user", userState.user)
-
     return (
         <>
             <div className="w-full bg-primary text-white flex justify-between items-center py-4 px-10 lg:px-16 fixed top-0 right-0">

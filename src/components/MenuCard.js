@@ -7,14 +7,6 @@ const MenuCard = ({ item }) => {
 
     const { cartState, addToCart } = useContext(CartContext)
 
-    useEffect(() => {
-        localStorage.setItem("cartData", JSON.stringify(cartState))
-        return () => {
-            localStorage.setItem("cartData", JSON.stringify(cartState))
-        }
-    }, [cartState])
-
-
     return (
         <>
             <div className="flex justify-between items-center my-6 gap-6">
