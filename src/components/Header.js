@@ -3,11 +3,15 @@ import { NavLink, Link } from "react-router-dom";
 import { AiOutlineShoppingCart, AiOutlineMenu } from "react-icons/ai"
 import { BiSearchAlt2 } from "react-icons/bi"
 import { CartContext } from "../../utils/context/CartContext";
+import { UserContext } from "../../utils/context/UserContext";
 
 const Header = () => {
     const { cartState } = useContext(CartContext)
+    const { userState, removeUser } = useContext(UserContext)
 
     const numberOfItems = Object.values(cartState.items).length
+
+    console.log("user", userState.user)
 
     return (
         <>
@@ -38,20 +42,31 @@ const Header = () => {
                             <NavLink className={({ isActive, isPending }) =>
                                 isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/help">Help</NavLink>
                         </li>
-                        <li className="list-none inline-block transition ease-in-out duration-100 hover:scale-105">
-                            <NavLink className={({ isActive, isPending }) =>
-                                isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/cart">
-                                <div className="flex items-center gap-2">
-                                    <AiOutlineShoppingCart className="md:text-xl" />
-                                    <span>{numberOfItems}</span>
-                                </div>
+                        {userState.user ?
+                            <>
+                                <li className="list-none inline-block transition ease-in-out duration-100 hover:scale-105">
+                                    <NavLink className={({ isActive, isPending }) =>
+                                        isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/cart">
+                                        <div className="flex items-center gap-2">
+                                            <AiOutlineShoppingCart className="md:text-xl" />
+                                            <span>{numberOfItems}</span>
+                                        </div>
+                                    </NavLink>
 
-                            </NavLink>
-
-                        </li>
+                                </li>
+                                <button onClick={removeUser}>
+                                    Logout
+                                </button>
+                            </>
+                            :
+                            <button>
+                                <NavLink className={({ isActive, isPending }) =>
+                                    isPending ? "text-white" : isActive ? "text-secondary border-2 border-secondary py-1 px-4 rounded-md" : "border-2 border-secondary py-1 px-4 rounded-md"} to="/auth">Sign in</NavLink>
+                            </button>
+                        }
                     </ul>
                 </div>
-            </div>
+            </div >
             <div className="fixed bottom-0 right-0 bg-primary text-white w-full px-4 py-6 md:hidden">
                 <ul className="justify-around flex text-sm">
                     <li className="list-none inline-block transition ease-in-out duration-100 hover:scale-105">

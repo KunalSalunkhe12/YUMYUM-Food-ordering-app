@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { signin, signup } from "../../api";
+import { useContext } from "react";
+import { UserContext } from "../../utils/context/UserContext";
 
 import yumyumLogo from "../../assets/yumyum-background.svg";
 import toast from "react-hot-toast";
@@ -12,32 +14,32 @@ const Auth = () => {
     const {
         register,
         handleSubmit,
-        control,
         formState: { errors, isSubmitting },
     } = useForm();
+    const { saveUser } = useContext(UserContext)
     const navigate = useNavigate();
+
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
     };
 
     const onSubmit = async (formData) => {
-        console.log(formData)
         try {
             if (isSignup) {
                 const { data } = await signup(formData);
-                localStorage.setItem("profile", JSON.stringify({ ...data }));
+                saveUser(data)
                 toast.success("Sign up successfully");
                 navigate("/");
             } else {
                 const { data } = await signin(formData);
-                localStorage.setItem("profile", JSON.stringify({ ...data }));
+                saveUser(data)
                 toast.success("Sign in successfully");
                 navigate("/");
             }
         } catch (error) {
             console.log(error);
-            toast.error("Something went wrong");
+            toast.error(error.response.data.message);
         }
     };
 
