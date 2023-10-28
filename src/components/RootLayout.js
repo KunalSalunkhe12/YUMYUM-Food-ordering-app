@@ -1,5 +1,5 @@
-import { CartProvider } from "../../utils/context/CartContext";
-import { UserProvider } from "../../utils/context/UserContext";
+import { CartProvider } from "../../utils/context/cart/CartContext";
+import { UserProvider } from "../../utils/context/user/UserContext";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import { Toaster } from "react-hot-toast";

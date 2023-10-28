@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from "react-router-dom"
-import { CartContext } from '../../utils/context/CartContext'
+import { CartContext } from '../../utils/context/cart/CartContext'
 import MenuCard from './MenuCard'
 
 const Cart = () => {

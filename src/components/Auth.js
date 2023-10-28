@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { signin, signup } from "../../api";
 import { useContext } from "react";
-import { UserContext } from "../../utils/context/UserContext";
+import { UserContext } from "../../utils/context/user/UserContext";
 
 import yumyumLogo from "../../assets/yumyum-background.svg";
 import toast from "react-hot-toast";

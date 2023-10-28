@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { CartContext } from '../../utils/context/CartContext'
+import { CartContext } from '../../utils/context/cart/CartContext'
 
 const QuantityButton = ({ item }) => {
 

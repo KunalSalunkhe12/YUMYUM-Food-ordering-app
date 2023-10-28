@@ -2,8 +2,8 @@ import React, { useContext } from "react"
 import { NavLink, Link } from "react-router-dom";
 import { AiOutlineShoppingCart, AiOutlineMenu } from "react-icons/ai"
 import { BiSearchAlt2 } from "react-icons/bi"
-import { CartContext } from "../../utils/context/CartContext";
-import { UserContext } from "../../utils/context/UserContext";
+import { CartContext } from "../../utils/context/cart/CartContext";
+import { UserContext } from "../../utils/context/user/UserContext";
 
 const Header = () => {
     const { cartState } = useContext(CartContext)

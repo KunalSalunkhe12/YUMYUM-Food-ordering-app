@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { CDN_IMG_URL } from "../constant";
-import { CartContext } from "../../utils/context/CartContext";
+import { CartContext } from "../../utils/context/cart/CartContext";
 import QuantityButton from "./QuantityButton";
 
 const MenuCard = ({ item }) => {
