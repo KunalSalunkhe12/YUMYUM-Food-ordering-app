@@ -71,8 +71,9 @@ const router = createBrowserRouter([
                 path: "cancel",
                 element: <Cancel />
             }
+
         ]
-    }
+    },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById("root"))

@@ -23,6 +23,11 @@ export const cartReducer = (state, action) => {
             localStorage.setItem("cartData", JSON.stringify(newRemoveState))
             return newRemoveState
 
+        case 'CLEAR_CART':
+            const newClearState = { ...state, items: {} }
+            localStorage.setItem("cartData", JSON.stringify(newClearState))
+            return newClearState
+
         default:
             throw Error('Unknown action: ' + action.type);
     }
