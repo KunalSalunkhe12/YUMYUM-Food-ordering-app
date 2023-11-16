@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3000';
+const url = process.env.REACT_APP_API_URL;
 
 export const signup = (userData) => axios.post(`${url}/user/signup`, userData);
 export const signin = (userData) => axios.post(`${url}/user/signin`, userData);
