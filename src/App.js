@@ -9,6 +9,8 @@ import Help from "./components/Help";
 import Profile from "./components/Profile";
 import Cart from "./components/Cart";
 import Auth from "./components/Auth";
+import Success from "./components/Payment/Success.js";
+import Cancel from "./components/Payment/Cancel.js";
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { lazy } from "react";
@@ -60,6 +62,14 @@ const router = createBrowserRouter([
             {
                 path: "cart",
                 element: <Cart />
+            },
+            {
+                path: "success",
+                element: <Success />
+            },
+            {
+                path: "cancel",
+                element: <Cancel />
             }
         ]
     }

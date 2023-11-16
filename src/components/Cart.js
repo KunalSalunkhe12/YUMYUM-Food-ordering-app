@@ -1,20 +1,36 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from "react-router-dom"
 import { CartContext } from '../../utils/context/cart/CartContext'
+import { UserContext } from '../../utils/context/user/UserContext'
 import MenuCard from './MenuCard'
+import { payment } from '../../api/index'
+import Error from './Error'
 
 const Cart = () => {
-
+    const [error, setError] = useState(null);
     const { cartState } = useContext(CartContext)
+
     const itemTotal = cartState.items && Object.values(cartState.items)
         .map((cartItem) => (cartItem.item.price / 100 || cartItem.item.defaultPrice / 100) * cartItem.quantity)
         .reduce((acc, curr) => acc + curr, 0);
 
-    const deliveryCharge = 39
-    const platformFee = 2
-    const GST = Math.round(itemTotal * 0.18)
+    const handlePayment = async () => {
+        try {
+            const response = await payment(cartState.items)
+            console.log(response)
+            if (response.status === 200) {
+                window.location.href = response.data.url
+            }
+        }
+        catch (error) {
+            console.log(error)
+            setError(error)
+        }
+    }
 
-    const TotalPrize = itemTotal + deliveryCharge + platformFee + GST
+    if (error) {
+        return <Error />
+    }
 
     return (
         <div className='flex flex-col my-24 gap-6 items-center p-3'>
@@ -29,30 +45,10 @@ const Cart = () => {
                                         return <MenuCard key={cartItem.id} item={cartItem.item} />
                                     })
                                 }
-                                <div className='p-4'>
-                                    <p className='text-base md:text-lg font-semibold'>Bill details</p>
-                                    <div className='flex justify-between mt-1'>
-                                        <div className=''>Item Total</div>
-                                        <div>₹ {itemTotal}</div>
-                                    </div>
-                                    <div className='flex justify-between mt-1'>
-                                        <div className=''>Delivery Fee</div>
-                                        <div>₹ {deliveryCharge}</div>
-                                    </div>
-                                    <hr />
-                                    <div className='flex justify-between mt-1'>
-                                        <div className=''>Platform Fee</div>
-                                        <div>₹ {platformFee}</div>
-                                    </div>
-                                    <div className='flex justify-between mt-1'>
-                                        <div className=''>GST</div>
-                                        <div>₹ {GST}</div>
-                                    </div>
-                                </div>
                             </div>
                             <div className='flex justify-between items-center p-4 bg-primary text-base md:text-lg lg:text-xl font-semibold'>
-                                <p className='text-white'>To Pay: ₹ {TotalPrize}</p>
-                                <button className='text-primary bg-secondary p-2 rounded-lg'>Checkout</button>
+                                <p className='text-white'>To Pay: ₹ {itemTotal}</p>
+                                <button onClick={handlePayment} className='text-primary bg-secondary p-2 rounded-lg'>Checkout</button>
                             </div>
                         </div>
                     </> :
