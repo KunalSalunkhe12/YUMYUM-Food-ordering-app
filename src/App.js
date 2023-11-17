@@ -6,13 +6,16 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Error from "./components/Error";
 import About from "./components/About";
 import Help from "./components/Help";
-import Profile from "./components/Profile";
+import MyProfile from "./components/MyProfile";
 import Cart from "./components/Cart";
 import Auth from "./components/Auth";
 import Success from "./components/Payment/Success.js";
 import Cancel from "./components/Payment/Cancel.js";
+import UserProfile from "./components/Profile/ProfileLayout.js";
+import Info from "./components/Profile/Info.js";
+import Orders from "./components/Profile/Orders.js";
 
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy } from "react";
 const Search = lazy(() => import("./components/Search.js"))
 
@@ -20,9 +23,7 @@ const Search = lazy(() => import("./components/Search.js"))
 const router = createBrowserRouter([
     {
         path: "/",
-        element: (
-            <RootLayout />
-        ),
+        element: <RootLayout />,
         errorElement: <Error />,
         children: [
             {
@@ -50,8 +51,8 @@ const router = createBrowserRouter([
                 element: <About />,
                 children: [
                     {
-                        path: "profile",
-                        element: <Profile />,
+                        path: "my-profile",
+                        element: <MyProfile />,
                     }
                 ]
             },
@@ -62,6 +63,21 @@ const router = createBrowserRouter([
             {
                 path: "cart",
                 element: <Cart />
+            },
+            {
+                path: "profile",
+                element: <UserProfile />,
+                children: [
+                    {
+                        index: true,
+                        element: <Info />
+                    },
+                    {
+                        path: "orders",
+                        element: <Orders />
+                    }
+                ]
+
             },
             {
                 path: "success",

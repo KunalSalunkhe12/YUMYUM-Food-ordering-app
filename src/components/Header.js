@@ -53,13 +53,14 @@ const Header = () => {
 
                         </li>
                         {userState.user ?
-                            <button onClick={removeUser}>
-                                <RxAvatar className="md:text-xl" />
-                            </button>
+                            <NavLink className={({ isActive, isPending }) =>
+                                isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/profile">
+                                <RxAvatar className="text-xl" />
+                            </NavLink>
                             :
                             <button>
                                 <NavLink className={({ isActive, isPending }) =>
-                                    isPending ? "text-white" : isActive ? "text-secondary border-2 border-secondary py-1 px-4 rounded-md" : "border-2 border-secondary py-1 px-4 rounded-md"} to="/auth">Sign in</NavLink>
+                                    isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/auth">Sign in</NavLink>
                             </button>
                         }
                     </ul>
@@ -97,14 +98,15 @@ const Header = () => {
                         </NavLink>
                     </li>
                     {userState.user ?
-                        <button onClick={removeUser}>
+                        <NavLink className={({ isActive, isPending }) =>
+                            isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/profile">
                             <RxAvatar className="text-xl" />
-                        </button>
+                        </NavLink>
                         :
-                        <button>
-                            <NavLink className={({ isActive, isPending }) =>
-                                isPending ? "text-white" : isActive ? "text-secondary border-2 border-secondary py-1 px-4 rounded-md" : "border-2 border-secondary py-1 px-4 rounded-md"} to="/auth">Sign in</NavLink>
-                        </button>
+                        <NavLink className={({ isActive, isPending }) =>
+                            isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/auth">
+                            Sign in
+                        </NavLink>
                     }
                 </ul>
             </div>

@@ -3,7 +3,7 @@
 import React from "react";
 import { Link } from "react-router-dom"
 
-class Profile extends React.Component {
+class MyProfile extends React.Component {
 
     constructor(props) {
         super(props)
@@ -44,4 +44,4 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile
+export default MyProfile

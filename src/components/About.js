@@ -14,7 +14,7 @@ const About = () => {
                 </p>
                 <div>
                     <span>Made by: </span>
-                    <Link className="font-medium text-blue-500" to="/about/profile">Kunal Salunkhe</Link>
+                    <Link className="font-medium text-blue-500" to="/about/my-profile">Kunal Salunkhe</Link>
                 </div>
             </div>
             <Outlet />
