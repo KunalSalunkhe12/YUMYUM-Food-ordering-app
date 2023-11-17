@@ -45,9 +45,10 @@ const Auth = () => {
 
     return (
         <div className="bg-gray-100 min-h-screen flex p-8">
-            <div className="container mt-24 max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div className="container lg:mt-14 max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                <h2 className="my-2 lg:my-6 text-xl font-medium">{isSignup ? "Sign Up" : "Sign In"}</h2>
                 <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                    <img src={yumyumLogo} alt="YumYum Logo" className="w-20 h-20 mx-auto mb-4" />
+                    <img src={yumyumLogo} alt="YumYum Logo" className="w-14 h-14 lg:w-20 lg:h-20 mx-auto mb-4" />
                     <form onSubmit={handleSubmit(onSubmit)} noValidate>
                         {isSignup && (
                             <div className="mb-4">

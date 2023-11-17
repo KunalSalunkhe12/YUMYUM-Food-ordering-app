@@ -1,7 +1,9 @@
 import React, { useContext } from "react"
 import { NavLink, Link } from "react-router-dom";
-import { AiOutlineShoppingCart, AiOutlineMenu } from "react-icons/ai"
+import { AiOutlineShoppingCart } from "react-icons/ai"
+import { RxAvatar } from "react-icons/rx";
 import { BiSearchAlt2 } from "react-icons/bi"
+import { FaHome, FaQuestionCircle, FaInfoCircle } from "react-icons/fa";
 import { CartContext } from "../../utils/context/cart/CartContext";
 import { UserContext } from "../../utils/context/user/UserContext";
 
@@ -40,22 +42,20 @@ const Header = () => {
                             <NavLink className={({ isActive, isPending }) =>
                                 isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/help">Help</NavLink>
                         </li>
-                        {userState.user ?
-                            <>
-                                <li className="list-none inline-block transition ease-in-out duration-100 hover:scale-105">
-                                    <NavLink className={({ isActive, isPending }) =>
-                                        isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/cart">
-                                        <div className="flex items-center gap-2">
-                                            <AiOutlineShoppingCart className="md:text-xl" />
-                                            <span>{numberOfItems}</span>
-                                        </div>
-                                    </NavLink>
+                        <li className="list-none inline-block transition ease-in-out duration-100 hover:scale-105">
+                            <NavLink className={({ isActive, isPending }) =>
+                                isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/cart">
+                                <div className="flex items-center gap-2">
+                                    <AiOutlineShoppingCart className="md:text-xl" />
+                                    <span>{numberOfItems}</span>
+                                </div>
+                            </NavLink>
 
-                                </li>
-                                <button onClick={removeUser}>
-                                    Logout
-                                </button>
-                            </>
+                        </li>
+                        {userState.user ?
+                            <button onClick={removeUser}>
+                                <RxAvatar className="md:text-xl" />
+                            </button>
                             :
                             <button>
                                 <NavLink className={({ isActive, isPending }) =>
@@ -72,21 +72,20 @@ const Header = () => {
                             isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/search">
                             <div className="flex items-center gap-2">
                                 <BiSearchAlt2 className="text-xl" />
-                                <span>Search</span>
                             </div>
                         </NavLink>
                     </li>
                     <li className="list-none inline-block transition ease-in-out duration-100 hover:scale-105">
                         <NavLink className={({ isActive, isPending }) =>
-                            isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/">Home</NavLink>
+                            isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/"><FaHome className="text-xl" /> </NavLink>
                     </li>
                     <li className="list-none inline-block transition ease-in-out duration-100 hover:scale-105">
                         <NavLink className={({ isActive, isPending }) =>
-                            isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/about">About</NavLink>
+                            isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/about"><FaInfoCircle className="text-xl" /></NavLink>
                     </li>
                     <li className="list-none inline-block transition ease-in-out duration-100 hover:scale-105">
                         <NavLink className={({ isActive, isPending }) =>
-                            isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/help">Help</NavLink>
+                            isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/help"><FaQuestionCircle className="text-xl" /></NavLink>
                     </li>
                     <li className="list-none inline-block transition ease-in-out duration-100 hover:scale-105">
                         <NavLink className={({ isActive, isPending }) =>
@@ -97,6 +96,16 @@ const Header = () => {
                             </div>
                         </NavLink>
                     </li>
+                    {userState.user ?
+                        <button onClick={removeUser}>
+                            <RxAvatar className="text-xl" />
+                        </button>
+                        :
+                        <button>
+                            <NavLink className={({ isActive, isPending }) =>
+                                isPending ? "text-white" : isActive ? "text-secondary border-2 border-secondary py-1 px-4 rounded-md" : "border-2 border-secondary py-1 px-4 rounded-md"} to="/auth">Sign in</NavLink>
+                        </button>
+                    }
                 </ul>
             </div>
         </>
