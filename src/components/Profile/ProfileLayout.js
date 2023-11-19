@@ -12,7 +12,7 @@ const ProfileLayout = () => {
                     </li>
                     <li>
                         <NavLink className={({ isActive }) =>
-                            isActive ? "underline underline-offset-4" : "text-primary"} to="orders">Home</NavLink>
+                            isActive ? "underline underline-offset-4" : "text-primary"} to="orders">Orders</NavLink>
                     </li>
                 </ul>
             </nav>

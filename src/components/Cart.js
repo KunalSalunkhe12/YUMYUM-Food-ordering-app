@@ -17,13 +17,14 @@ const Cart = () => {
         }
     }, [])
 
+
     const itemTotal = cartState.items && Object.values(cartState.items)
         .map((cartItem) => (cartItem.item.price / 100 || cartItem.item.defaultPrice / 100) * cartItem.quantity)
         .reduce((acc, curr) => acc + curr, 0);
 
     const handlePayment = async () => {
         try {
-            const response = await payment(cartState.items)
+            const response = await payment(cartState.items, userState.user.result._id)
             console.log(response)
             if (response.status === 200) {
                 window.location.href = response.data.url
