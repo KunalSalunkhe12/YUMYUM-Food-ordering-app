@@ -1,4 +1,3 @@
-import React, { useEffect } from "react"
 import RestaurantCard from "./RestaurantCard"
 import Error from "./Error"
 import HomeShimmer from "./Shimmer/HomeShimmer"
@@ -7,10 +6,6 @@ import ShimmerCard from "./Shimmer/ShimmerCard"
 
 const RestaurantList = () => {
     const { restaurants, isLoading, isError } = useFetchRestaurants()
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
 
     if (isError) {

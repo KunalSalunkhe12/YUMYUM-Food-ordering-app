@@ -3,9 +3,9 @@ import { NavLink, Outlet } from 'react-router-dom'
 
 const ProfileLayout = () => {
     return (
-        <div className='mt-16'>
-            <nav className='bg-secondary'>
-                <ul className='flex gap-10 px-16 py-2 font-medium'>
+        <div className='mt-16 px-8 md:px-16'>
+            <nav className='border-b-2 mt-20 p-4'>
+                <ul className='flex gap-10 font-medium'>
                     <li>
                         <NavLink className={({ isActive }) =>
                             isActive ? "underline underline-offset-4" : "text-primary"} to="." end>Profile</NavLink>

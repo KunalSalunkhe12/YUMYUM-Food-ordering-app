@@ -6,3 +6,4 @@ export const signup = (userData) => axios.post(`${url}/user/signup`, userData);
 export const signin = (userData) => axios.post(`${url}/user/signin`, userData);
 
 export const payment = (cartData, userId) => axios.post(`${url}/create-checkout-session/pay`, { cartData, userId });
+export const getOrders = (userId) => axios.get(`${url}/order/${userId}`);
