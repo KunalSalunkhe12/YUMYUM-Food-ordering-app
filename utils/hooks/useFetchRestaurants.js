@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { fetchRestaurants } from '../../api'
 
 const useFetchRestaurants = () => {
     const [restaurants, setRestaurants] = useState([])
@@ -10,9 +11,8 @@ const useFetchRestaurants = () => {
         setIsError(false)
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/restaurants`)
-            const json = await response.json()
-            setRestaurants(json)
+            const response = await fetchRestaurants()
+            setRestaurants(response.data)
         } catch (error) {
             setIsError(true)
             console.log(error);

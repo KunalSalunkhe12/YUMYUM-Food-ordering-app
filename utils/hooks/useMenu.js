@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { fetchMenu } from '../../api'
 
 const useMenu = (id) => {
 
@@ -8,9 +9,8 @@ const useMenu = (id) => {
     const getRestaurantMenu = async () => {
         setIsError(false)
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/menu?id=${id}`)
-            const json = await response.json()
-            setRestaurant(json)
+            const response = await fetchMenu(id)
+            setRestaurant(response.data)
         } catch (error) {
             setIsError(true)
 

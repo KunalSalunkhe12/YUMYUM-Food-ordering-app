@@ -2,6 +2,9 @@ import axios from 'axios';
 
 const url = process.env.REACT_APP_API_URL;
 
+export const fetchRestaurants = () => axios.get(`${url}/api/restaurants`);
+export const fetchMenu = (restaurantId) => axios.get(`${url}/api/menu/${restaurantId}`);
+
 export const signup = (userData) => axios.post(`${url}/user/signup`, userData);
 export const signin = (userData) => axios.post(`${url}/user/signin`, userData);
 
