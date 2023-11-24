@@ -104,7 +104,7 @@ const Auth = () => {
                         </div>
                         <button
                             type="submit"
-                            className="bg-primary w-full text-center py-3 rounded text-secondary focus:outline-none my-1"
+                            className="btn_primary w-full focus:outline-none my-1"
                             disabled={isSubmitting}
                         >
                             {isSubmitting

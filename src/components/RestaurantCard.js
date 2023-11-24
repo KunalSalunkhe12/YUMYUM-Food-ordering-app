@@ -6,7 +6,7 @@ import { AiFillStar } from "react-icons/ai"
 
 const RestaurantCard = ({ restaurant }) => {
     return (
-        <div className="card cursor-pointer shadow-lg rounded-lg">
+        <div className="cursor-pointer shadow-lg rounded-lg">
             <Link to={'/restaurant/' + restaurant?.id}>
                 {
                     restaurant?.cloudinaryImageId ?

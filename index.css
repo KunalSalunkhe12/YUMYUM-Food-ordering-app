@@ -2,3 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn_primary {
+    @apply bg-primary text-white py-2 px-4 font-semibold rounded-lg hover:text-secondary transition-all duration-300;
+  }
+}

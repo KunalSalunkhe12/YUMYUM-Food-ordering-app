@@ -6,7 +6,6 @@ import QuantityButton from "./QuantityButton";
 const MenuCard = ({ item }) => {
 
     const { cartState, addToCart } = useContext(CartContext)
-    console.log(cartState)
 
     return (
         <>

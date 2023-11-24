@@ -63,7 +63,7 @@ const Cart = () => {
                     <div className='flex flex-col justify-center gap-5 mt-10'>
                         <p className='text-center text-xl font-semibold'>Your Cart is Empty!</p>
                         <Link to='/'>
-                            <button className='text-secondary bg-primary font-semibold p-2 rounded-lg'>Check All Restaurants</button>
+                            <button className='btn_primary'>Check All Restaurants</button>
                         </Link>
                     </div>
             }
