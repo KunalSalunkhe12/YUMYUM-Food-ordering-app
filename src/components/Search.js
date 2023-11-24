@@ -27,7 +27,6 @@ const Search = () => {
         getSearchRestaurants()
     }, [searchInput])
 
-    console.log(suggestedRestaurants);
 
     return (
         <div className='my-24'>
