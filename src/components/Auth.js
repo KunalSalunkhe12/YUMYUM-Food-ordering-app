@@ -5,7 +5,7 @@ import { signin, signup } from "../../api";
 import { useContext } from "react";
 import { UserContext } from "../../utils/context/user/UserContext";
 
-import yumyumLogo from "../../assets/yumyum-background.svg";
+import yumyumLogo from "../../assets/yumyum-background.png";
 import toast from "react-hot-toast";
 
 

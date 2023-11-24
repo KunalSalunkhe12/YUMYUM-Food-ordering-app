@@ -12,13 +12,15 @@ const Info = () => {
     }
     return (
         <div className='flex justify-center'>
-            <div className='mt-8 shadow-lg rounded-lg p-4 w-full md:w-2/5 lg:w-2/6'>
+            <div className='my-8 md:p-4 w-full md:w-2/3 lg:w-2/4'>
                 <h2 className='text-xl font-semibold'>User Info</h2>
-                <div className='my-8 flex flex-col gap-4 text-lg'>
-                    <h3><span className='font-medium'>Name: </span>{userState.user.result.name}</h3>
-                    <h3><span className='font-medium'>Email: </span> {userState.user.result.email}</h3>
+                <div className='shadow-lg rounded-lg p-4'>
+                    <div className='my-8 flex flex-col gap-4'>
+                        <h3><span className='font-medium'>Name: </span>{userState.user.result.name}</h3>
+                        <h3><span className='font-medium'>Email: </span> {userState.user.result.email}</h3>
+                    </div>
+                    <button className="btn_primary" onClick={handleLogout}>Logout</button>
                 </div>
-                <button className="btn_primary" onClick={handleLogout}>Logout</button>
             </div>
         </div>
     )

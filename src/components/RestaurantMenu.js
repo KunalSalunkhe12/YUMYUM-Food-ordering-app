@@ -4,7 +4,7 @@ import Error from './Error';
 import MenuShimmer from './Shimmer/MenuShimmer';
 import { CDN_IMG_URL } from '../constant';
 import { AiFillStar } from "react-icons/ai"
-import Logo from "../../assets/yumyum-background.svg"
+import Logo from "../../assets/yumyum-background.png"
 import useMenu from '../../utils/hooks/useMenu';
 import ItemCategoryList from './ItemCategoryList';
 import NestedItemCategoryList from './NestedItemCategoryList';

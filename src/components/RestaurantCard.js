@@ -1,5 +1,5 @@
 import React from "react"
-import Logo from "../../assets/yumyum-background.svg"
+import Logo from "../../assets/yumyum-background.png"
 import { Link } from "react-router-dom"
 import { CDN_IMG_URL } from "../constant"
 import { AiFillStar } from "react-icons/ai"
