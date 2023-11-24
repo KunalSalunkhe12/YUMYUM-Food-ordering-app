@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { RxAvatar } from "react-icons/rx";
 import { BiSearchAlt2 } from "react-icons/bi"
-import { FaHome, FaQuestionCircle, FaInfoCircle } from "react-icons/fa";
+import { FaHome, FaQuestionCircle, FaInfoCircle, FaShoppingCart, FaUser, FaSearch } from "react-icons/fa";
 import { CartContext } from "../../utils/context/cart/CartContext";
 import { UserContext } from "../../utils/context/user/UserContext";
 
@@ -72,7 +72,7 @@ const Header = () => {
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/search">
                             <div className="flex items-center gap-2">
-                                <BiSearchAlt2 className="text-xl" />
+                                <FaSearch className="text-xl" />
                             </div>
                         </NavLink>
                     </li>
@@ -92,7 +92,7 @@ const Header = () => {
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/cart">
                             <div className="flex items-center gap-2">
-                                <AiOutlineShoppingCart className="text-xl" />
+                                <FaShoppingCart className="text-xl" />
                                 <span>{numberOfItems}</span>
                             </div>
                         </NavLink>
@@ -100,12 +100,14 @@ const Header = () => {
                     {userState.user ?
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/profile">
-                            <RxAvatar className="text-xl" />
+                            <FaUser className="text-xl" />
                         </NavLink>
                         :
                         <NavLink className={({ isActive, isPending }) =>
                             isPending ? "text-white" : isActive ? "text-secondary" : ""} to="/auth">
-                            Sign in
+                            <p className="font-semibold">
+                                Sign in
+                            </p>
                         </NavLink>
                     }
                 </ul>
