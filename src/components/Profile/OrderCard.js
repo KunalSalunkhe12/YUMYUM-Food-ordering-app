@@ -14,14 +14,11 @@ const OrderCard = ({ order }) => {
             <div className='overflow-y-auto h-24 flex flex-col gap-2'>
                 {
                     order?.line_items?.data?.map(item => (
-                        <>
-                            <div key={item.id} className='p-3 rounded-lg bg-slate-100'>
-                                <p className='font-medium'>Name: <span className='font-normal'>{item?.description}</span></p>
-                                <p className='font-medium'>Quantity: <span className='font-normal'>{item?.quantity}</span></p>
-                                <p className='font-medium'>Total: <span className='font-normal'>{item?.amount_total / 100}</span></p>
-                            </div>
-                            <hr />
-                        </>
+                        <div key={item.id} className='p-3 rounded-lg bg-slate-100'>
+                            <p className='font-medium'>Name: <span className='font-normal'>{item?.description}</span></p>
+                            <p className='font-medium'>Quantity: <span className='font-normal'>{item?.quantity}</span></p>
+                            <p className='font-medium'>Total: <span className='font-normal'>{item?.amount_total / 100}</span></p>
+                        </div>
                     ))
                 }
             </div>

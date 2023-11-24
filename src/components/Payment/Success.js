@@ -17,9 +17,14 @@ const Success = () => {
         <h2 className="text-4xl font-bold">Success!</h2>
         <p className="text-lg mt-4">Your Payment has been done</p>
       </div>
-      <Link to="/">
-        <button className="bg-primary text-secondary px-4 py-2 rounded-md font-medium mt-6">Home</button>
-      </Link>
+      <div className="flex gap-4">
+        <Link to="/">
+          <button className="btn_primary mt-6">Home</button>
+        </Link>
+        <Link to="/profile/orders">
+          <button className="btn_primary mt-6">Orders</button>
+        </Link>
+      </div>
     </div>
   )
 
