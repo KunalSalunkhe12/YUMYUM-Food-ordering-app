@@ -18,7 +18,7 @@ const Orders = () => {
                 <h2 className='text-xl font-semibold mb-6'>Order History</h2>
                 <div className='flex flex-col gap-4'>
                     {
-                        isLoading ? <OrderShimmer /> : orders?.map(order => <OrderCard key={order._id} order={order} />)
+                        isLoading ? <OrderShimmer /> : orders.length > 0 ? orders?.map(order => <OrderCard key={order._id} order={order} />) : <h2>No orders</h2>
                     }
                 </div>
             </div>
