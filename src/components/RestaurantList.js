@@ -7,7 +7,6 @@ import ShimmerCard from "./Shimmer/ShimmerCard"
 const RestaurantList = () => {
     const { restaurants, isLoading, isError } = useFetchRestaurants()
 
-
     if (isError) {
         return <Error />
     }

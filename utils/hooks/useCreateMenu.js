@@ -1,3 +1,7 @@
+//It is a custom hook to fetch the menu of a restaurant from SWIGGY API and store it in the database
+//IT is for DEVELOPMENT ONLY
+//Ignore this file
+
 import { useState, useEffect } from 'react'
 
 const useCreateMenu = (id) => {
