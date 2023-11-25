@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../../utils/context/user/UserContext'
+import toast from 'react-hot-toast'
 
 const Info = () => {
     const { userState, removeUser } = useContext(UserContext)
@@ -9,6 +10,7 @@ const Info = () => {
     const handleLogout = () => {
         removeUser()
         navigate('/')
+        toast.success("Logged out successfully")
     }
     return (
         <div className='flex justify-center'>

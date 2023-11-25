@@ -1,5 +1,6 @@
 import { createContext, useReducer } from 'react';
 import { cartReducer } from './cartReducer';
+import toast from "react-hot-toast";
 
 export const CartContext = createContext(null)
 
@@ -18,6 +19,7 @@ export const CartProvider = ({ children }) => {
             type: "ADD_TO_CART",
             item: item
         })
+        toast.success("Item added to cart")
     }
 
     const removeFromCart = (id) => {
@@ -25,6 +27,7 @@ export const CartProvider = ({ children }) => {
             type: "REMOVE_FROM_CART",
             id: id
         })
+        toast.error("Item removed from cart")
     }
 
     const clearCart = () => {

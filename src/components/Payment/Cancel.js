@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom"
 import cancelIcon from "../../../assets/cancel.png"
+import toast from "react-hot-toast"
+
 const Cancel = () => {
+
+    toast.error("Payment Cancelled")
 
     return (
         <div className="h-screen flex justify-center items-center flex-col">

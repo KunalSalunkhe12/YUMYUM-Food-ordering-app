@@ -2,12 +2,14 @@ import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom"
 import { CartContext } from "../../../utils/context/cart/CartContext";
 import successIcon from "../../../assets/success.png"
+import toast from "react-hot-toast";
 
 const Success = () => {
   const { clearCart } = useContext(CartContext)
 
   useEffect(() => {
     clearCart()
+    toast.success("Payment Successful")
   }, [])
 
   return (
