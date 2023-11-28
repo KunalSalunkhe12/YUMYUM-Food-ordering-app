@@ -24,8 +24,7 @@ const Cart = () => {
 
     const handlePayment = async () => {
         try {
-            const response = await payment(cartState.items, userState.user.result._id)
-            console.log(response)
+            const response = await payment(cartState.items)
             if (response.status === 200) {
                 window.location.href = response.data.url
             }

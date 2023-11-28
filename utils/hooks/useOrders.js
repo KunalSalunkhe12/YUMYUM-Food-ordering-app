@@ -1,9 +1,7 @@
-import { useState, useEffect, useContext } from "react";
-import { UserContext } from "../context/user/UserContext"
+import { useState, useEffect } from "react";
 import { getOrders } from "../../api";
 
 const useOrders = () => {
-    const { userState } = useContext(UserContext);
     const [orders, setOrders] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
@@ -13,7 +11,7 @@ const useOrders = () => {
         setIsError(false);
 
         try {
-            const response = await getOrders(userState.user.result._id);
+            const response = await getOrders();
             setOrders(response.data.orders);
         } catch (error) {
             setIsError(true);

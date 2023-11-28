@@ -17,5 +17,5 @@ export const fetchMenu = (restaurantId) => API.get(`/api/menu/${restaurantId}`);
 export const signup = (userData) => API.post(`/user/signup`, userData);
 export const signin = (userData) => API.post(`/user/signin`, userData);
 
-export const payment = (cartData, userId) => API.post(`/create-checkout-session/pay`, { cartData, userId });
-export const getOrders = (userId) => API.get(`/order/${userId}`);
+export const payment = (cartData) => API.post(`/create-checkout-session/pay`, { cartData });
+export const getOrders = () => API.get(`/order`);

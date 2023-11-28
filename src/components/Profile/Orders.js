@@ -6,8 +6,6 @@ import Error from "../Error"
 const Orders = () => {
     const { orders, isLoading, isError } = useOrders()
 
-    console.log(orders, isError, isLoading)
-
     if (isError) {
         return <Error />
     }
