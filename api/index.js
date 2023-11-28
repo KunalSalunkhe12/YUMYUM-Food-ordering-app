@@ -2,11 +2,20 @@ import axios from 'axios';
 
 const url = process.env.REACT_APP_API_URL;
 
-export const fetchRestaurants = () => axios.get(`${url}/api/restaurants`);
-export const fetchMenu = (restaurantId) => axios.get(`${url}/api/menu/${restaurantId}`);
+const API = axios.create({ baseURL: url });
 
-export const signup = (userData) => axios.post(`${url}/user/signup`, userData);
-export const signin = (userData) => axios.post(`${url}/user/signin`, userData);
+API.interceptors.request.use((req) => {
+    if (localStorage.getItem('profile')) {
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+    }
+    return req;
+})
 
-export const payment = (cartData, userId) => axios.post(`${url}/create-checkout-session/pay`, { cartData, userId });
-export const getOrders = (userId) => axios.get(`${url}/order/${userId}`);
+export const fetchRestaurants = () => API.get(`/api/restaurants`);
+export const fetchMenu = (restaurantId) => API.get(`/api/menu/${restaurantId}`);
+
+export const signup = (userData) => API.post(`/user/signup`, userData);
+export const signin = (userData) => API.post(`/user/signin`, userData);
+
+export const payment = (cartData, userId) => API.post(`/create-checkout-session/pay`, { cartData, userId });
+export const getOrders = (userId) => API.get(`/order/${userId}`);

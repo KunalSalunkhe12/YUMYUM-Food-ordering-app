@@ -9,7 +9,7 @@ import { UserContext } from "../../utils/context/user/UserContext";
 
 const Header = () => {
     const { cartState } = useContext(CartContext)
-    const { userState, removeUser } = useContext(UserContext)
+    const { userState } = useContext(UserContext)
 
     const numberOfItems = Object.values(cartState.items).length
 

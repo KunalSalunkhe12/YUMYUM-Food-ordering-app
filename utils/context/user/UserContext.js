@@ -1,5 +1,7 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { userReducer } from "./userReducer";
+import { jwtDecode } from 'jwt-decode'
+import toast from "react-hot-toast";
 
 export const UserContext = createContext(null);
 
@@ -21,9 +23,21 @@ export const UserProvider = ({ children }) => {
 
     const removeUser = () => {
         dispatch({
-            type: "REMOVE_USER"
+            type: "REMOVE_USER",
         })
     }
+
+    useEffect(() => {
+        const token = userState.user?.token
+        if (token) {
+
+            const decodedToken = jwtDecode(token)
+            if (decodedToken.exp * 1000 < new Date().getTime()) {
+                removeUser()
+                toast.error("Session expired Please Sign In")
+            }
+        }
+    }, [])
 
     return (
         <UserContext.Provider value={{ userState, saveUser, removeUser }}>
