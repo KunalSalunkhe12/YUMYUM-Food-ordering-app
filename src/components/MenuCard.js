@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import { CDN_IMG_URL } from "../constant";
 import { CartContext } from "../../utils/context/cart/CartContext";
 import QuantityButton from "./QuantityButton";
@@ -6,6 +6,7 @@ import QuantityButton from "./QuantityButton";
 const MenuCard = ({ item }) => {
 
     const { cartState, addToCart } = useContext(CartContext)
+    console.log('menuCard re render rendered')
 
     return (
         <>

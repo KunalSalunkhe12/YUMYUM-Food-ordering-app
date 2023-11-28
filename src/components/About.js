@@ -1,6 +1,5 @@
 import { Outlet, Link } from "react-router-dom"
 import Logo from "../../assets/yumyum-background.png"
-import useCreateMenu from "../../utils/hooks/useCreateMenu"
 
 
 const About = () => {
