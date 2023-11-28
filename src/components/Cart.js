@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link } from "react-router-dom"
+import React, { useContext, useState } from 'react'
+import { Link, Navigate } from "react-router-dom"
 import { CartContext } from '../../utils/context/cart/CartContext'
 import { UserContext } from '../../utils/context/user/UserContext'
 import MenuCard from './MenuCard'
@@ -10,12 +10,6 @@ const Cart = () => {
     const [error, setError] = useState(null);
     const { cartState } = useContext(CartContext)
     const { userState } = useContext(UserContext)
-
-    useEffect(() => {
-        if (!userState.user) {
-            window.location.href = '/auth'
-        }
-    }, [])
 
 
     const itemTotal = cartState.items && Object.values(cartState.items)
@@ -37,6 +31,10 @@ const Cart = () => {
 
     if (error) {
         return <Error />
+    }
+
+    if (!userState.user) {
+        return <Navigate to="/auth" />
     }
 
     return (
