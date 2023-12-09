@@ -11,12 +11,13 @@ import Cart from "./components/Cart";
 import Auth from "./components/Auth";
 import Success from "./components/Payment/Success.js";
 import Cancel from "./components/Payment/Cancel.js";
-import UserProfile from "./components/Profile/ProfileLayout.js";
+import ProfileLayout from "./components/Profile/ProfileLayout.js";
 import Info from "./components/Profile/Info.js";
 import Orders from "./components/Profile/Orders.js";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy } from "react";
+import PrivateRoute from "../utils/PrivateRoute/PrivateRoute.js";
 const Search = lazy(() => import("./components/Search.js"))
 
 
@@ -62,11 +63,18 @@ const router = createBrowserRouter([
             },
             {
                 path: "cart",
-                element: <Cart />
+                element: (
+                    <PrivateRoute>
+                        <Cart />
+                    </PrivateRoute>)
             },
             {
                 path: "profile",
-                element: <UserProfile />,
+                element: (
+                    <PrivateRoute>
+                        <ProfileLayout />
+                    </PrivateRoute>
+                ),
                 children: [
                     {
                         index: true,

@@ -2,7 +2,16 @@ import React from 'react'
 
 const OrderCard = ({ order }) => {
     const address = `${order?.customer_details?.address?.line1}, ${order?.customer_details?.address?.city}, ${order?.customer_details?.address?.state}, ${order?.customer_details?.address?.postal_code}`
-    const date = new Date(order?.created * 1000).toLocaleDateString()
+    const date = new Date(order?.created * 1000).toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+    });
+
+
     return (
         <div className='shadow-lg rounded-lg p-4 flex flex-col gap-2'>
             <p><span className='font-medium underline'>Order Will be Delivered in 30mins</span></p>

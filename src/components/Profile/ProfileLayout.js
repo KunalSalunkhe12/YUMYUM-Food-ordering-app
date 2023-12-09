@@ -1,13 +1,7 @@
-import React, { useContext } from 'react'
-import { UserContext } from '../../../utils/context/user/UserContext'
-import { NavLink, Outlet, Navigate } from 'react-router-dom'
+import React from 'react'
+import { NavLink, Outlet, } from 'react-router-dom'
 
 const ProfileLayout = () => {
-    const { userState } = useContext(UserContext)
-
-    if (!userState.user) {
-        return <Navigate to='/auth' />
-    }
 
     return (
         <div className='mt-16 px-4 md:px-8 lg:px-16'>

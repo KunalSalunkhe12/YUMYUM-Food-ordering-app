@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Link, Navigate } from "react-router-dom"
+import { Link, Navigate, redirect } from "react-router-dom"
 import { CartContext } from '../../utils/context/cart/CartContext'
 import { UserContext } from '../../utils/context/user/UserContext'
 import MenuCard from './MenuCard'
@@ -9,8 +9,6 @@ import Error from './Error'
 const Cart = () => {
     const [error, setError] = useState(null);
     const { cartState } = useContext(CartContext)
-    const { userState } = useContext(UserContext)
-
 
     const itemTotal = cartState.items && Object.values(cartState.items)
         .map((cartItem) => (cartItem.item.price / 100 || cartItem.item.defaultPrice / 100) * cartItem.quantity)
@@ -20,7 +18,7 @@ const Cart = () => {
         try {
             const response = await payment(cartState.items)
             if (response.status === 200) {
-                window.location.href = response.data.url
+                redirect(response.data.url)
             }
         }
         catch (error) {
@@ -31,10 +29,6 @@ const Cart = () => {
 
     if (error) {
         return <Error />
-    }
-
-    if (!userState.user) {
-        return <Navigate to="/auth" />
     }
 
     return (

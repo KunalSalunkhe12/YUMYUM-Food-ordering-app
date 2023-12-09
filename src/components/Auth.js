@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { signin, signup } from "../../api";
 import { useContext } from "react";
@@ -18,7 +18,13 @@ const Auth = () => {
     } = useForm();
     const { saveUser } = useContext(UserContext)
     const navigate = useNavigate();
+    const { state: locationState } = useLocation()
 
+    useEffect(() => {
+        if (locationState) {
+            toast.error(locationState?.message)
+        }
+    }, [])
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
