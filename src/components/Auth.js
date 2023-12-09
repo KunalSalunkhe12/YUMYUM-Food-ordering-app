@@ -7,10 +7,12 @@ import { UserContext } from "../../utils/context/user/UserContext";
 
 import yumyumLogo from "../../assets/yumyum-background.png";
 import toast from "react-hot-toast";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const Auth = () => {
     const [isSignup, setIsSignup] = useState(false);
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false)
     const {
         register,
         handleSubmit,
@@ -25,6 +27,10 @@ const Auth = () => {
             toast.error(locationState?.message)
         }
     }, [])
+
+    const switchPasswordVisibility = () => {
+        setIsPasswordVisible(prevState => !prevState)
+    }
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
@@ -91,21 +97,27 @@ const Auth = () => {
                             <p className="text-xs text-red-500">{errors.email?.message}</p>
                         </div>
                         <div className="mb-4">
-                            <input
-                                type="password"
-                                className="block border border-grey-light w-full p-2 rounded mb-4"
-                                {...register("password", {
-                                    required: {
-                                        value: true,
-                                        message: "Please enter your password",
-                                    },
-                                    minLength: {
-                                        value: 6,
-                                        message: "Password must have at least 6 characters",
-                                    },
-                                })}
-                                placeholder="Password*"
-                            />
+                            <div className="flex relative">
+                                <input
+                                    type={isPasswordVisible ? "text" : "password"}
+                                    className="block border border-grey-light w-full p-2 rounded mb-4"
+                                    {...register("password", {
+                                        required: {
+                                            value: true,
+                                            message: "Please enter your password",
+                                        },
+                                        minLength: {
+                                            value: 6,
+                                            message: "Password must have at least 6 characters",
+                                        },
+                                    })}
+                                    placeholder="Password*"
+                                />
+                                {
+                                    isPasswordVisible ? <FaEyeSlash onClick={switchPasswordVisibility} className="absolute right-3 bottom-1/2 cursor-pointer" /> :
+                                        <FaEye onClick={switchPasswordVisibility} className="absolute right-3 bottom-1/2 cursor-pointer" />
+                                }
+                            </div>
                             <p className="text-xs text-red-500">{errors.password?.message}</p>
                         </div>
                         <button
